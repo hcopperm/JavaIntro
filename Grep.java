@@ -21,13 +21,13 @@ class Grep {
   //prompts user to enter a word
   //Checks if that word contains the substring passed in as the --p flag
   public static void main(String[] args) throws IOException {
-		HashMap<String, String> flags = Grep.processFlags(args);
-		String substring = flags.get("p");
-		boolean ignoreCase = flags.get("i").equals("true");
-		BufferedReader br =
-		    new BufferedReader(new InputStreamReader(System.in));
-		String line = br.readLine();
-		while (line != null) {
+    HashMap<String, String> flags = Grep.processFlags(args);
+    String substring = flags.get("p");
+    boolean ignoreCase = flags.get("i").equals("true");
+    BufferedReader br =
+        new BufferedReader(new InputStreamReader(System.in));
+    String line = br.readLine();
+    while (line != null) {
       boolean foundMatch = Grep.contains(line, substring, ignoreCase);
       if (foundMatch) {
         System.out.println(line);
