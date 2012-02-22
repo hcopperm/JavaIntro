@@ -3,8 +3,8 @@
   Homework 4
   Usage: java Demo
   Then follow instructions from command line
-  Sample Output: ""Type \"create\" to create	a new user, \"see\" to" 
-		      + " see your current user list, and \"q\" to quit""
+  Sample Output: ""Type \"create\" to create  a new user, \"see\" to" 
+          + " see your current user list, and \"q\" to quit""
 */
 
 import java.io.*;
@@ -35,29 +35,29 @@ class User {
     return isShort(pw) && isLowercase(pw);
   }
   
-	//Takes in a string and checks to see if it is between 2 and 6 chars
-	private static boolean isShort(String input) {
-	  if (input.length() > MAX_LENGTH) {
-	    System.out.println("Too long.");
-	    return false;
-	  } else if (input.length() < MIN_LENGTH) {
-	    System.out.println("Too short.");
-	    return false; 
-	  } else {
-	    return true;
-	  }
-	}
-	
-	//Takes in a string and checks to see if it's between "a" and "z" (ie is it
-	//lowercase
-	private static boolean isLowercase(String input) {
-	  int numNonLetters = 0;
+  //Takes in a string and checks to see if it is between 2 and 6 chars
+  private static boolean isShort(String input) {
+    if (input.length() > MAX_LENGTH) {
+      System.out.println("Too long.");
+      return false;
+    } else if (input.length() < MIN_LENGTH) {
+      System.out.println("Too short.");
+      return false; 
+    } else {
+      return true;
+    }
+  }
+  
+  //Takes in a string and checks to see if it's between "a" and "z" (ie is it
+  //lowercase
+  private static boolean isLowercase(String input) {
+    int numNonLetters = 0;
     for (int i = 0; i < input.length(); i++) {
       if (!(input.charAt(i) >= 'a') || !(input.charAt(i) <= 'z')) {
         numNonLetters += 1;
       }
     }
-  	  
+      
     if (numNonLetters > 0) {
       System.out.println("Only use lowercase letters.");
       return false;
@@ -99,23 +99,23 @@ class Database {
 class CreateFakeUser {
   
   //Main method creates a new Database, and adds Users to it as desired.
-	public static void main(String[] args) throws IOException {
-	  boolean quit = false;
-	  BufferedReader br =
-		    new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("This is UserCreator3000. Enter your database name");
-		
-		//Read in user input
-		Database db = new Database(br.readLine());
-		
-		//Until user says to quit, execute code as they desire
-		while (!quit) {
-		  System.out.println("Type \"create\" to create	a new user, \"see\" to" 
-		      + " see your current user list, and \"q\" to quit");
-		  String str = br.readLine();
-		  if (str.equals("create")) {
-		    createUser(db, br);
-		  } else if (str.equals("see")) {
+  public static void main(String[] args) throws IOException {
+    boolean quit = false;
+    BufferedReader br =
+        new BufferedReader(new InputStreamReader(System.in));
+    System.out.println("This is UserCreator3000. Enter your database name");
+    
+    //Read in user input
+    Database db = new Database(br.readLine());
+    
+    //Until user says to quit, execute code as they desire
+    while (!quit) {
+      System.out.println("Type \"create\" to create a new user, \"see\" to" 
+          + " see your current user list, and \"q\" to quit");
+      String str = br.readLine();
+      if (str.equals("create")) {
+        createUser(db, br);
+      } else if (str.equals("see")) {
         db.printUserInfo();
       } else if (str.equals("q")) {
         quit = true;
@@ -124,11 +124,11 @@ class CreateFakeUser {
       } 
     }
     System.out.println("Goodbye");
-	}
-	
-	//Validates usernames and passwords, and if they are valid, passes them into
-	//the User constructor.
-	static void createUser(Database db, BufferedReader br) throws IOException {
+  }
+  
+  //Validates usernames and passwords, and if they are valid, passes them into
+  //the User constructor.
+  static void createUser(Database db, BufferedReader br) throws IOException {
     System.out.println("Please enter your username");
     String un = br.readLine();
     while (!User.isUserNameValid(un)) {
@@ -143,5 +143,5 @@ class CreateFakeUser {
     System.out.println("Password valid");
     db.addUser(new User(un, pw));
     System.out.println("User added.");
-	}
+  }
 }
